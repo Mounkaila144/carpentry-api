@@ -1,0 +1,70 @@
+<?php
+
+namespace Modules\UsersGuard\Entities;
+
+use App\Traits\HasPermissions;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+/**
+ * Modèle User pour les TENANTS (base du site)
+ * Différent de App\Models\User (superadmin)
+ */
+class User extends Authenticatable
+{
+    use HasApiTokens, Notifiable, HasPermissions;
+
+    /**
+     * Table dans la base TENANT
+     */
+    protected $table = 't_users';
+
+    /**
+     * Connexion TENANT (dynamique)
+     */
+    protected $connection = 'tenant';
+
+    /**
+     * Pas de timestamps Laravel
+     */
+    public $timestamps = false;
+
+    /**
+     * Colonnes modifiables
+     */
+    protected $fillable = [
+        'username',
+        'email',
+        'password',
+        'firstname',
+        'lastname',
+        'is_active',
+        'sex',
+        'phone',
+        'mobile',
+    ];
+
+    /**
+     * Colonnes cachées
+     */
+    protected $hidden = [
+        'password',
+        'salt',
+    ];
+
+    /**
+     * Cast des types
+     */
+    protected $casts = [
+        'lastlogin' => 'datetime',
+    ];
+
+    /**
+     * Relations
+     */
+
+
+
+}
