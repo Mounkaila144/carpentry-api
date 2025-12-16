@@ -26,7 +26,7 @@ return [
 
         'template_tenant_connection' => null,
 
-        'prefix' => 'tenant',
+        'prefix' => 'tenant_',
         'suffix' => '',
 
         'managers' => [
@@ -77,7 +77,10 @@ return [
 
     'migration_parameters' => [
         '--force' => true,
-        '--path' => [database_path('migrations/tenant')],
+        '--path' => collect(glob(base_path('Modules/*/Database/Migrations/tenant')))
+            ->filter(fn ($path) => is_dir($path))
+            ->values()
+            ->toArray(),
         '--realpath' => true,
     ],
 

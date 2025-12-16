@@ -22,7 +22,7 @@ class TenantSeeder extends Seeder
             [
                 'id' => 'company2',
                 'domains' => [
-                    ['domain' => 'company2.localhost'],
+                    ['domain' => 'tenant2.local'],
                 ],
             ],
             [

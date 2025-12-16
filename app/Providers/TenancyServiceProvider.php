@@ -27,25 +27,18 @@ class TenancyServiceProvider extends ServiceProvider
             function ($event) {
                 $tenant = $event->tenancy->tenant;
 
+                // Utiliser la méthode database()->getName() du package stancl/tenancy
+                $databaseName = $tenant->database()->getName();
+
+                // Récupérer la config de la connexion centrale comme base
+                $centralConfig = config('database.connections.mysql');
+
                 // Configuration dynamique de la connexion tenant
                 config([
-                    'database.connections.tenant' => [
-                        'driver' => 'mysql',
-                        'host' => $tenant->site_db_host,
-                        'port' => 3306,
-                        'database' => $tenant->site_db_name,
-                        'username' => $tenant->site_db_login,
-                        'password' => $tenant->site_db_password,
-                        'charset' => 'utf8mb4',
-                        'collation' => 'utf8mb4_unicode_ci',
-                        'prefix' => '',
-                        'strict' => true,
-                        'engine' => null,
-                        'options' => extension_loaded('pdo_mysql') ? array_filter([
-                            \PDO::ATTR_PERSISTENT => true,
-                            \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => false,
-                        ]) : [],
-                    ],
+                    'database.connections.tenant.database' => $databaseName,
+                    'database.connections.tenant.host' => $tenant->site_db_host ?? $centralConfig['host'],
+                    'database.connections.tenant.username' => $tenant->site_db_username ?? $centralConfig['username'],
+                    'database.connections.tenant.password' => $tenant->site_db_password ?? $centralConfig['password'],
                 ]);
 
                 // Purger et reconnecter
@@ -58,9 +51,8 @@ class TenancyServiceProvider extends ServiceProvider
                 // Logger pour debug
                 if (config('app.debug')) {
                     logger()->info("Tenancy initialized", [
-                        'tenant_id' => $tenant->site_id,
-                        'host' => $tenant->site_host,
-                        'database' => $tenant->site_db_name,
+                        'tenant_id' => $tenant->id,
+                        'database' => $databaseName,
                     ]);
                 }
             }

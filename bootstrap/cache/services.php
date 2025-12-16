@@ -38,6 +38,8 @@
     34 => 'Spatie\\Permission\\PermissionServiceProvider',
     35 => 'Stancl\\Tenancy\\TenancyServiceProvider',
     36 => 'App\\Providers\\AppServiceProvider',
+    37 => 'Stancl\\Tenancy\\TenancyServiceProvider',
+    38 => 'App\\Providers\\TenancyServiceProvider',
   ),
   'eager' => 
   array (
@@ -63,6 +65,8 @@
     19 => 'Spatie\\Permission\\PermissionServiceProvider',
     20 => 'Stancl\\Tenancy\\TenancyServiceProvider',
     21 => 'App\\Providers\\AppServiceProvider',
+    22 => 'Stancl\\Tenancy\\TenancyServiceProvider',
+    23 => 'App\\Providers\\TenancyServiceProvider',
   ),
   'deferred' => 
   array (

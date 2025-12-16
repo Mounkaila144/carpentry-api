@@ -109,7 +109,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
      */
     public function getDatabaseName(): string
     {
-        return $this->site_db_name;
+        return 'tenant_' . $this->id;
     }
 
     /**
