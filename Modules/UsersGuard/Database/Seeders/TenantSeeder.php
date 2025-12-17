@@ -16,13 +16,13 @@ class TenantSeeder extends Seeder
             [
                 'id' => 'company1',
                 'domains' => [
-                    ['domain' => 'tenant1.local'],
+                    ['domain' => 'tenant1.nigerdev.com'],
                 ],
             ],
             [
                 'id' => 'company2',
                 'domains' => [
-                    ['domain' => 'tenant2.local'],
+                    ['domain' => 'tenant2.nigerdev.com'],
                 ],
             ],
             [
