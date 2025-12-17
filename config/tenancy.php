@@ -10,7 +10,9 @@ return [
 
     'central_domains' => [
         // Add your central domains here (domains that should NOT trigger tenancy)
-        // Example: 'admin.yourapp.com', 'api.yourapp.com'
+        'api.local',
+        'localhost',
+        '127.0.0.1',
     ],
 
     'bootstrappers' => [

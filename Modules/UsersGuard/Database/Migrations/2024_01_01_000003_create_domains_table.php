@@ -16,6 +16,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('domain')->unique();
             $table->string('tenant_id');
+            $table->boolean('is_primary')->default(false);
             $table->timestamps();
 
             $table->foreign('tenant_id')->references('id')->on('tenants')->onUpdate('cascade')->onDelete('cascade');
