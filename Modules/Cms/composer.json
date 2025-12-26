@@ -1,0 +1,20 @@
+{
+    "name": "modules/cms",
+    "description": "CMS module for managing frontend content",
+    "keywords": [],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Modules\\Cms\\": "",
+            "Modules\\Cms\\Database\\Factories\\": "Database/Factories/",
+            "Modules\\Cms\\Database\\Seeders\\": "Database/Seeders/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Cms\\Providers\\CmsServiceProvider"
+            ]
+        }
+    }
+}

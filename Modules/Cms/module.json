@@ -1,0 +1,11 @@
+{
+    "name": "Cms",
+    "alias": "cms",
+    "description": "Module Cms pour le CRM",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Cms\\Providers\\CmsServiceProvider"
+    ],
+    "files": []
+}
